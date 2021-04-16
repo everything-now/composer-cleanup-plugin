@@ -11,6 +11,7 @@ use Composer\Installer\PackageEvent;
 use Composer\Script\CommandEvent;
 use Composer\Util\Filesystem;
 use Composer\Package\BasePackage;
+use Composer\Installer\PackageEvents;
 
 class CleanupPlugin implements PluginInterface, EventSubscriberInterface
 {
@@ -59,10 +60,10 @@ class CleanupPlugin implements PluginInterface, EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-            ScriptEvents::POST_PACKAGE_INSTALL  => array(
+            PackageEvents::POST_PACKAGE_INSTALL  => array(
                 array('onPostPackageInstall', 0)
             ),
-            ScriptEvents::POST_PACKAGE_UPDATE  => array(
+            PackageEvents::POST_PACKAGE_UPDATE  => array(
                 array('onPostPackageUpdate', 0)
             ),
             /*ScriptEvents::POST_INSTALL_CMD  => array(
